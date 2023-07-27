@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jian</title>
+  <link rel="stylesheet" href="./css/jinu.css">
+</head>
+
+<body>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstNameInput">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastNameInput">
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumberInput">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="passwordInput">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPasswordInput">
+    </div>
+  </div>
+
+  <button onclick="validateForm()">Sign up</button>
+
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById("firstNameInput").value;
+      var lastName = document.getElementById("lastNameInput").value;
+      var phoneNumber = document.getElementById("phoneNumberInput").value;
+      var password = document.getElementById("passwordInput").value;
+      var confirmPassword = document.getElementById("confirmPasswordInput").value;
+
+      if (firstName === "") {
+        alert("Please enter your first name.");
+        return;
+      }
+
+      if (lastName === "") {
+        alert("Please enter your last name.");
+        return;
+      }
+
+      if (phoneNumber === "") {
+        alert("Please enter your phone number.");
+        return;
+      }
+
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      if (password === "") {
+        alert("Please enter a password.");
+        return;
+      }
+
+      if (confirmPassword === "") {
+        alert("Please confirm your password.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return;
+      }
+
+      alert("Registration successful!");
+
+      window.location.href = "http://127.0.0.1:5500/kiti.html"; // Replace with your desired URL
+    }
+  </script>
+
+</body>
+
+</html>
