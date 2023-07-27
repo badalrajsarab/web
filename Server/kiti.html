@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kiti</title>
+    <link rel="stylesheet" href="./styles/style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>𝘎𝘜𝘛𝘈𝘙 𝘎𝘶</h1>
+    </header>
+    <nav>
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="showAboutMe()">About Me</a>
+        <a href="#" onclick="showFeaturedContent()">Featured Content</a>
+    </nav>
+    <main id="home">
+        <h2>Welcome to Our Website</h2>
+        <p>Welcome to GUTAR Gu, your ultimate platform to connect with friends and create memorable moments together! Our
+            mission is to bring friends closer, fostering meaningful conversations, and sharing laughter and joy. As you
+            explore this space, you'll find a welcoming environment where you can chat, exchange stories, and embark on
+            new adventures together.</p>
+        <p>At GUTAR Gu, we value the importance of friendship and believe that true friendships enrich our lives with
+            happiness and support. Whether you're looking to catch up with old friends or make new ones, our platform is
+            designed to help you create lasting bonds and cherish unforgettable memories.</p>
+        <p>As passionate web developers and technology enthusiasts, we're committed to providing you with a seamless and
+            enjoyable experience. Feel free to share your thoughts, experiences, and photos with friends in a secure and
+            private environment.</p>
+        <p>Join our community today and experience the joy of staying connected with friends and making new connections.
+            Let's embark on this exciting journey of friendship together!</p>
+        <p>Thank you for being a part of GUTAR Gu!</p>
+    </main>
+
+    <!-- ... Rest of the HTML code ... -->
+
+    <main>
+        <div id="chatArea"></div>
+        <div id="inputArea">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </main>
+
+    <div id="friendList">
+        <h2>Friend List</h2>
+        <ul id="friends"></ul>
+    </div>
+    <button onclick="changeBackgroundColor()">Change Background Color</button>
+    <button onclick="addFriend()">Add Friend</button>
+
+    <div id="aboutMe">
+        <h2>About Me</h2>
+        <p>Hello, I'm BADAL and I'm excited to welcome you to GUTAR Gu! This platform was created to bring friends
+            closer together, making it easier to chat and share great moments. As a passionate web developer and
+            technology enthusiast, I designed this space to foster meaningful conversations and connections. I hope you
+            enjoy your time here, and don't forget to add your friends and start chatting!</p>
+    </div>
+
+    <div id="featuredContent">
+        <h2>Featured Content</h2>
+        <div class="article">
+            <article>
+                <h3>Article 1: The Importance of Friendship</h3>
+                <p>Friendship is a valuable aspect of life that brings joy, support, and understanding. In this article, we
+                    explore the significance of having strong friendships and how they enrich our lives.</p>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.e0c0_neTKdCGbqiFBUAuKgHaE8&pid=Api&P=0&h=220" alt="Image 1">
+            </article>
+        </div>
+        <div class="article">
+            <article>
+                <h3>Article 2: Exploring New Adventures Together</h3>
+                <p>Embarking on adventures with friends can be a thrilling and rewarding experience. Discover the joy of
+                    exploring new places and trying exciting activities with your closest pals.</p>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.dXXB7eQ-jpYrjQCNCBmg4AHaE9&pid=Api&P=0&h=220" alt="Image 2">
+            </article>
+        </div>
+        <div class="article">
+            <article>
+                <h3>Article 3: Sharing Laughter and Memories</h3>
+                <p>Laughter is contagious, and sharing funny moments with friends creates lasting memories. Learn why humor is
+                    an essential ingredient in any friendship and how it strengthens bonds between people.</p>
+                <img src="https://tse3.mm.bing.net/th?id=OIP.1TQnSJaL3ly1YSvlHhNaAQHaFK&pid=Api&P=0&h=220" alt="Image 3">
+            </article>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script>
+        const socket = io(); // Initialize the Socket.IO client
+
+        function sendMessage() {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value;
+
+            if (message.trim() !== "") {
+                socket.emit("chatMessage", message);
+                messageInput.value = "";
+            }
+        }
+
+        socket.on("chatMessage", (message) => {
+            const chatArea = document.getElementById("chatArea");
+            const newMessage = document.createElement("div");
+            newMessage.textContent = message;
+            chatArea.appendChild(newMessage);
+        });
+
+        // Initialize the friend list as an empty array
+        let friendList = [];
+
+        function addFriend() {
+            const friendName = prompt("Enter your friend's name:");
+            if (friendName) {
+                friendList.push(friendName);
+                updateFriendList();
+            }
+        }
+
+        function updateFriendList() {
+            const friendsUl = document.getElementById("friends");
+            friendsUl.innerHTML = ""; // Clear the list
+
+            friendList.forEach((friend) => {
+                const friendLi = document.createElement("li");
+                friendLi.textContent = friend;
+                friendsUl.appendChild(friendLi);
+            });
+        }
+
+        updateFriendList();
+
+        function changeBackgroundColor() {
+            var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // JavaScript functions to show/hide sections
+        function showHome() {
+            document.getElementById("home").style.display = "block";
+            document.getElementById("aboutMe").style.display = "none";
+            document.getElementById("featuredContent").style.display = "none";
+        }
+
+        function showAboutMe() {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("aboutMe").style.display = "block";
+            document.getElementById("featuredContent").style.display = "none";
+        }
+
+        function showFeaturedContent() {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("aboutMe").style.display = "none";
+            document.getElementById("featuredContent").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>

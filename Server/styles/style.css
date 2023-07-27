@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-image: url("https://tse3.explicit.bing.net/th?id=OIP.SmT-FKowGlD4XxKxFRcLSAHaEK&pid=Api&P=0&h=220"); */
+}
+
+header {
+    /* background-color: #1d957f37; */
+    background: linear-gradient(#921990,#b0aedf);        
+
+    color: #211538;
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 25px;}
+
+main {
+    padding: 20px;
+    border: 2px solid black;
+    margin: 10px;
+
+}
+
+#chatArea {
+    border: 1px solid #ccc;
+    min-height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    background-color: rgb(220, 212, 212);
+}
+
+#inputArea {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#friendList {
+    margin-top: 20px;
+}
+
+#aboutMe {
+    background-color: #815f5f2e;
+        padding: 20px;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+.h2{
+    text-align: center;
+    margin: 10px;
+}
+.changeBackgroundColor{
+    display: flex;
+    align-items: flex-end;
+
+}
+#aboutMe,
+#featuredContent {
+    display: none;
+}
+
+nav {
+    text-align: end;
+    margin-top: -12px;;
+  }
+
+
+nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+        /* Styling for main content */
+        main {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        article {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow:hidden ;
+        }
+
+        article img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            transition: all ease 1s;
+
+        }
+        article:hover img{
+            scale: 1.1;
+          }
+
+        button {
+            padding: 8px 20px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+ background: linear-gradient(#921990,#b0aedf);        
+     box-shadow: 5px 5px 0px #211538;
+        }
+
+        /* Styling for friend list */
+        #friendList {
+            max-width: 400px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #friendList h2 {
+            margin-bottom: 10px;
+        }
+
+        #friendList ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #friendList li {
+            margin-bottom: 5px;
+        }
+       #home{
+        background-image: url("https://tse3.explicit.bing.net/th?id=OIP.SmT-FKowGlD4XxKxFRcLSAHaEK&pid=Api&P=0&h=220");
+       }
+
